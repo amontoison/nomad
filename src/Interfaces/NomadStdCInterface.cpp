@@ -544,7 +544,8 @@ bool solveNomadProblem(NomadProblem nomad_problem,
         NOMAD::CacheBase::getInstance()->clear();
         // set counter to 0
         NOMAD::CacheBase::getInstance()->resetNbCacheHits();
-        NOMAD::EvcInterface::getEvaluatorControl()->setNbEval(0);
+        NOMAD::EvcInterface::getEvaluatorControl()->setBbEval(0);
+        NOMAD::EvalPoint::resetCurrentTag();
         // set seed to default for deterministic option
         NOMAD::RNG::resetPrivateSeedToDefault();
 
@@ -561,6 +562,7 @@ bool solveNomadProblem(NomadProblem nomad_problem,
     NOMAD::CacheBase::getInstance()->clear();
     
     // set seed to 0 for deterministic option
+    NOMAD::EvalPoint::resetCurrentTag();
     NOMAD::RNG::resetPrivateSeedToDefault();
 
     return -1;
